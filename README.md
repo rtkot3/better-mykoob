@@ -1,4 +1,5 @@
-# Modded MyKoob v2.0
+![modded mykoob](https://i.imgur.com/mErud3P.png)
+# Modded MyKoob v2.0 
 
 # Installation _[ EN ]_
 
