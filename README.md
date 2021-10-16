@@ -3,12 +3,12 @@
 
 # Installation _[ EN ]_
 
-* Go to the [Chrome expansion](chrome://extensions/) and turn on a Developer Mode;
+* Go to the [Chrome expansion](chrome://extensions/)(chrome://extensions/) and turn on a Developer Mode;
 * After click to "Load unpacked extension" and select the folder (which you pulled from the archive).
 
 # Установка _[ RU ]_
 
-* Перейдите по [Chrome expansion](chrome://extensions/) и включите режим разработчика;
+* Перейдите по [Chrome expansion](chrome://extensions/)(chrome://extensions/) и включите режим разработчика;
 * После нажмите на "Загрузить распакованное расширение" и выберите папку (Которую вы извлекли из архива).
 
 # Функции _[ RU ]_
