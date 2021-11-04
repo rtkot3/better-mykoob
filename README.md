@@ -28,10 +28,10 @@
 
 ## Начало _[ ?profile ]_
 
-* Добавляет "r3 настройки" слева под "Lietotāji".
-* Возможность включить / выключить звук новых сообщений. [Так же нужно будет включить звук для сайта mykoob.lv](https://imgur.com/a/dQrgCnM)
+* Добавляет "r3 настройки" слева под "Lietotāji"
+* Возможность включить / выключить звук новых сообщений. Перед включением функции, [нужно](https://imgur.com/a/dQrgCnM)
 * Возможность включить / выключить режим спам бота в __"Ultra"__
-* Над именем пишется ваш "user_id",
+* Над именем пишется ваш "user_id"
 
 ## Дневник _[ ?lessonsplan ]_
 
@@ -64,10 +64,10 @@
 
 ## Start _[? Profile]_
 
-* Your "user_id" is written with your name,
-* Ability to enable / disable the sound of new messages. [You will also need to turn on the sound for the mykoob.lv site](https://imgur.com/a/dQrgCnM)
+* Your "user_id" is written with your name
+* Ability to enable / disable the sound of new messages. Before activating the function, [must](https://imgur.com/a/dQrgCnM)
 * Ability to enable / disable spam bot mode in __ "Ultra" __
-* Adds "r3 settings" to the left under "Lietotāji".
+* Adds "r3 settings" to the left under "Lietotāji"
 
 ## Lessonsplan _[?Lessonsplan]_
 
