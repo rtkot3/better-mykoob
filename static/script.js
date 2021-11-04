@@ -9,8 +9,6 @@ function f_system_version_container() {   // Добавить приписку '
         system_version_container.innerText += ' [modded by rktot3]' }
 }
 
-// document.querySelector('.mykoob-logo').style.background = ('url(https://i.imgur.com/mErud3P.png) no-repeat')
-
 function f_conversations_container() {  // Увеличить левый чат на '964px'
     var conversations_container = document.querySelector('#conversations_container')
     if (!conversations_container) {
@@ -107,15 +105,10 @@ function f_r3_spam_ultra() {   // Работоспособность спама 
             var r3_spam_input = document.querySelector('#r3_spam_input')
             var message_text_conversation = document.querySelector('#message-text-conversation')
             if (r3_spam_sms_count.value != '' && r3_spam_input.value != '') {
-
                 if (r3_spam_sms_count.value > 1350  ) {
-                    r3_spam_sms_count.value = 1350
-                }
-
+                    r3_spam_sms_count.value = 1350 }
                 if (r3_spam_sms_count.value < 1  ) {
-                    r3_spam_sms_count.value = 1
-                }
-
+                    r3_spam_sms_count.value = 1 }
                 r3_spam_btn.disabled = true
                 r3_spam_btn.style.color = 'red'
                 r3_spam_input.disabled = true
@@ -123,34 +116,21 @@ function f_r3_spam_ultra() {   // Работоспособность спама 
                 message_text_conversation.disabled = true
                 message_text_conversation.style.cursor = 'not-allowed'
                 var value = 1
-
                 console.log('[mykoob] - Отсылаю запросы для отправки сообщений(я)')
-
                 while(true) {
-
                     var formData = new FormData()
-
                     formData.append("user_id", localStorage.user_id)
                     formData.append("content", r3_spam_input.value)
                     formData.append("group_id", f_find_group_id())
-                
                     var request = new XMLHttpRequest()
                     request.open("POST", "https://family.mykoob.lv/?messagingWeb/sendMessageToGroup")
                     request.send(formData)
-
                     if (value >= r3_spam_sms_count.value) { break }
-                    value++
-
-                }
-
+                    value++ }
                 console.log('[mykoob] - Запросы на отправку сообщений(я) отправлены, ждем перезагрузки страницы')
-
-                setTimeout(() => { location.reload(); }, value * 5)
-
-            } else {
-                console.error('[mykoob] - Ошибка! Вам нужно заполнить все поля!') }
-
-        }) }
+                setTimeout(() => { location.reload(); }, value * 5) } 
+            else {
+                console.error('[mykoob] - Ошибка! Вам нужно заполнить все поля!') } }) }
 }
 
 function f_find_group_id() {
@@ -433,17 +413,49 @@ function f_left_data() {    // r3 Настройки в left_data
     else { 
         var left_data = document.querySelectorAll('.clear')
         left_data = left_data[4]    
+
         if (localStorage.getItem('checkbox_r3_spam_ultra') == 'false') {
-            value = '<div style="margin-top: 10px"> <input id="r3_spam_ultra" type="checkbox"> <lable>UltraSpam</lable> </div>'
-        } else {
+            value = '<div style="margin-top: 10px"> <input id="r3_spam_ultra" type="checkbox"> <lable>UltraSpam</lable> </div>' } 
+        else {
             value = '<div style="margin-top: 10px"> <input id="r3_spam_ultra" type="checkbox" checked> <lable>UltraSpam</lable> </div>'}
-        left_data.outerHTML = value + left_data.outerHTML
+
+        if (localStorage.getItem('checkbox_r3_msg_sound') == 'false') {
+            value2 = '<div style="margin-top: 10px"> <input id="r3_msg_sound" type="checkbox"> <lable>Message sound</lable> </div>' } 
+        else {
+            value2 = '<div style="margin-top: 10px"> <input id="r3_msg_sound" type="checkbox" checked> <lable>Message sound</lable> </div>'}
+
+        left_data.outerHTML = value + value2 + left_data.outerHTML
         var r3_spam_ultra = document.querySelector('#r3_spam_ultra')
+        var r3_msg_sound = document.querySelector('#r3_msg_sound')
+
         r3_spam_ultra.addEventListener("click", function()  {
             console.log('[mykoob] - UltraSpam = ' + r3_spam_ultra.checked)
             localStorage.setItem('checkbox_r3_spam_ultra', r3_spam_ultra.checked)
+        })
+
+        r3_msg_sound.addEventListener("click", function()  {
+            console.log('[mykoob] - Message sound = ' + r3_msg_sound.checked)
+            localStorage.setItem('checkbox_r3_msg_sound', r3_msg_sound.checked)
+            location.reload()
         }) }
 
+}
+
+function f_msg_sounds() {   // Звук нового сообщения в майкубе
+    var new_msg_count = localStorage.new_msg
+    var new_messages_alert = document.querySelector('#new_messages_alert')
+
+    if (new_messages_alert.style.display == 'none') {
+        localStorage.setItem('new_msg', 0)}
+    
+    if (new_messages_alert.style.display == 'none' ||  new_messages_alert.innerText == '' || new_messages_alert.innerText == new_msg_count) {
+        setTimeout(() => { f_msg_sounds(); }, 500) }
+    else {
+        localStorage.setItem('new_msg', new_messages_alert.innerText)
+        var audio = new Audio('https://notificationsounds.com/storage/sounds/file-sounds-1150-pristine.mp3');
+        audio.play();
+        console.log('You have new message!')
+        setTimeout(() => { f_msg_sounds(); }, 1000) }
 }
 
 
@@ -453,12 +465,17 @@ function f_left_data() {    // r3 Настройки в left_data
 
 
 
-
-
 if (location.origin == 'https://family.mykoob.lv' ) {
-    if(!localStorage.checkbox_r3_spam_ultra) {
-        localStorage.setItem('checkbox_r3_spam_ultra', false)
-    }
+
+    if (!localStorage.checkbox_r3_spam_ultra) {
+        localStorage.setItem('checkbox_r3_spam_ultra', false)}
+    
+    if (!localStorage.checkbox_r3_msg_sound) {
+        localStorage.setItem('checkbox_r3_msg_sound', true)}
+
+    if (!localStorage.new_msg) {
+        localStorage.setItem('new_msg', 0)}
+
     var system_version_container = document.querySelector('#system-version-container')
     var conversations_container = document.querySelector('#conversations_container')
     var writing_box = document.querySelector('.writing-box')
@@ -479,6 +496,12 @@ if (location.origin == 'https://family.mykoob.lv' ) {
 
     f_system_version_container()
     f_top_settings()
+
+    if (localStorage.checkbox_r3_msg_sound == 'false') { } 
+    else {     
+        setTimeout(() => { f_msg_sounds(); }, 500) 
+    }   
+
 }
 
 if (location.href == 'https://family.mykoob.lv/?profile' ) {
@@ -498,12 +521,14 @@ if (location.href == 'https://family.mykoob.lv/?messagingWeb') {
     f_text_field()
     f_button_box()
     f_load_more_conversations_container()
+
     if (localStorage.checkbox_r3_spam_ultra == 'false') {
         f_add_file_wrap()
         f_r3_spam_btn() } 
     else {
         f_add_file_wrap_for_ultra() 
         f_r3_spam_ultra() }
+
     f_delete_message_to_all()
     f_write_by_id()
 
