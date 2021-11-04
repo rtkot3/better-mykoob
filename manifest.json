@@ -1,7 +1,7 @@
 {
         "manifest_version": 2,
         "name": "Better Mykoob",
-        "version": "2.0",
+        "version": "2.1",
         "author": "rtkot3",
 
         "browser_action": {
